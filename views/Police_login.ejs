@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Police Login – Blossom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i> Women Safety
+    </div>
+    <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
+  </div>
+
+  <!-- Login Form -->
+  <div class="page-container">
+    <div class="form-header">
+      <h1 class="form-title"><i class="fas fa-user-shield"></i> Police Login</h1>
+      <p class="form-subtitle">Sign in to your station account</p>
+    </div>
+
+    <form id="policeLoginForm" class="form">
+      <div class="form-group">
+        <label>Police Station Name</label>
+        <input type="text" required placeholder="Enter your station name">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required placeholder="Enter your password">
+      </div>
+
+      <button type="submit" class="btn-primary"> <a href="/pulishstation">Login</a></button>
+    </form>
+
+    <div class="form-footer">
+      <p>Not registered? <a href="/pulish_registration">Register your station</a></p>
+    </div> 
+  </div>
+
+  <!--  Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="/WomenLogin"><i class="fas fa-female"></i><span>Women</span></a>
+    <a href="/volunteer-login"><i class="fas fa-hands-helping"></i><span>Volunteer</span></a>
+    <a href="/Police_login"><i class="fas fa-user-shield"></i><span>Police</span></a>
+  </div>
+
+</body>
+</html>
+ <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460, #533483, #7209b7);
+      color: white;
+      min-height: 100vh;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0f172a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      border-bottom: 1px solid #444;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #ff2e63, #8e2de2, #4a00e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-link {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .page-container {
+      max-width: 420px;
+      width: 100%;
+      padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid #3b82f6;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-title {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-subtitle {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background: #1e293b;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: #aaa;
+    }
+
+    .btn-primary {
+      background-color: #3b82f6;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #2563eb;
+    }
+
+    .form-footer {
+      margin-top: 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .form-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #0f172a;
+      display: flex;
+      justify-content: space-around;
+      padding: 14px 0;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.6rem;
+      gap: 4px;
+    }
+
+    .bottom-nav a span {
+      font-size: 0.8rem;
+    }
+
+    .bottom-nav a:hover {
+      color: #f8bbd9;
+      transform: scale(1.1);
+    }
+  </style>

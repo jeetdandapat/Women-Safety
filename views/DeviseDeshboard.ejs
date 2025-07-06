@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+        <div class="container">
+        <!-- Top Control Bar -->
+        <div class="glass top-bar">
+            <div class="app-title">
+                <i class="fas fa-shield-alt gradient-text"></i>
+                <h1 class="gradient-text">Women Safety </h1>
+            </div>
+            
+            <div class="controls">
+                <div class="bluetooth-chip glass-card" id="bluetoothChip">
+                    <div class="status-dot" id="statusDot"></div>
+                    <i class="fab fa-bluetooth" style="color: #60a5fa;"></i>
+                    <span id="connectionStatus">Disconnected</span>
+                </div>
+                <button class="connect-btn glass-card" id="connectBtn">
+                    <i class="fas fa-link"></i>
+                    <span>Connect Device</span>
+                </button>
+            </div>
+        </div>
+        
+
+<h2 style="text-align: center; font-size: 2rem; margin: 2rem 0; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: #e0f7fa;">
+  <i class="fa-solid fa-microchip" style="color: #c6f7ee; font-size: 2rem; animation: pulse 1.5s infinite;"></i>
+  <span style="color: #e565fc;">Active Stats</span>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Sensor Grid -->
+        <div class="sensor-grid">
+            <!-- Pulse Rate Sensor (MAX30102) -->
+            <div class="sensor-card" data-sensor="pulse">
+                <div class="sensor-header">
+                    <div class="sensor-icon pulse-icon">❤️</div>
+                    <div class="sensor-info">
+                        <h3>Pulse Rate</h3>
+                        <!-- <p>MAX30102 Sensor</p> -->
+                    </div>
+                    <div class="sensor-status" id="pulseStatus">
+                        <span class="status-dot"></span>
+                        <!-- <span>Normal</span> -->
+                    </div>
+                </div>
+                <div class="sensor-display">
+                    <div class="gauge-container">
+                        <svg class="circular-gauge" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#2a2a2a" stroke-width="8"/>
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="url(#pulseGradient)" 
+                                    stroke-width="8" stroke-dasharray="565" stroke-dashoffset="565" 
+                                    id="pulseGauge" class="gauge-fill"/>
+                            <defs>
+                                <linearGradient id="pulseGradient" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#ff6b9d"/>
+                                    <stop offset="100%" stop-color="#ff3366"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="gauge-center">
+                            <span class="gauge-value" id="pulseValue">--</span>
+                            <span class="gauge-unit">BPM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motion Sensor (MPU-6050) -->
+            <div class="sensor-card" data-sensor="motion">
+                <div class="sensor-header">
+                <div class="sensor-icon motion-icon">
+  <i class="fas fa-running"></i>
+</div>
+
+                    <div class="sensor-info">
+                        <h3>Motion/Activity</h3>
+                        <!-- <p>MPU-6050 Accelerometer</p> -->
+                    </div>
+                    <div class="sensor-status" id="motionStatus">
+                        <span class="status-dot"></span>
+                        <!-- <span>Active</span> -->
+                    </div>
+                </div>
+                <div class="sensor-display">
+                    <div class="motion-display">
+                        <div class="motion-value">
+                            <span id="motionValue"></span>
+                            <span class="unit">Steps</span>
+                        </div>
+                        <div class="motion-bars">
+                            <div class="motion-bar" data-axis="x">
+                                <label>X</label>
+                                <div class="bar-fill" id="motionX"></div>
+                            </div>
+                            <div class="motion-bar" data-axis="y">
+                                <label>Y</label>
+                                <div class="bar-fill" id="motionY"></div>
+                            </div>
+                            <div class="motion-bar" data-axis="z">
+                                <label>Z</label>
+                                <div class="bar-fill" id="motionZ"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proximity Sensor (VL53L0X) -->
+            <div class="sensor-card" data-sensor="proximity">
+                <div class="sensor-header">
+                 <div class="sensor-icon proximity-icon">
+  <i class="fas fa-satellite-dish"></i>
+</div>
+
+                    <div class="sensor-info">
+                        <h3>Proximity</h3>
+                        <!-- <p>VL53L0X Laser Sensor</p> -->
+                    </div>
+                    <div class="sensor-status" id="proximityStatus">
+                        <span class="status-dot"></span>
+                        <!-- <span>Safe</span> -->
+                    </div>
+                </div>
+                <div class="sensor-display">
+                    <div class="proximity-display">
+                        <div class="distance-value">
+                            <span id="proximityValue">--</span>
+                            <span class="unit">cm</span>
+                        </div>
+                        <div class="proximity-visual">
+                            <div class="proximity-waves">
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                            </div>
+                            <div class="proximity-indicator" id="proximityIndicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thermal Sensor (MLX90614) -->
+            <div class="sensor-card" data-sensor="thermal">
+                <div class="sensor-header">
+                    <div class="sensor-icon thermal-icon">
+  <i class="fas fa-thermometer-half"></i>
+</div>
+
+                    <div class="sensor-info">
+                        <h3>Temperature</h3>
+                        <!-- <p>MLX90614 IR Sensor</p> -->
+                    </div>
+                    <div class="sensor-status" id="thermalStatus">
+                        <span class="status-dot"></span>
+                        <!-- <span>Normal</span> -->
+                    </div>
+                </div>
+                <div class="sensor-display">
+                    <div class="thermal-display">
+                        <div class="temp-value">
+                            <span id="thermalValue">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="temp-scale">
+                            <div class="temp-bar">
+                                <div class="temp-fill" id="thermalBar"></div>
+                            </div>
+                            <div class="temp-labels">
+                                <span>35°C</span>
+                                <span>100°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pressure Sensor (FSR402) -->
+            <div class="sensor-card" data-sensor="pressure">
+                <div class="sensor-header">
+                  <div class="sensor-icon pressure-icon">
+  <i class="fas fa-tachometer-alt"></i>
+</div>
+
+
+
+                    <div class="sensor-info">
+                        <h3> Pressure</h3>
+                        <!-- <p>FSR402 Force Sensor</p> -->
+                    </div>
+                    <div class="sensor-status" id="pressureStatus">
+                        <span class="status-dot"></span>
+                        <!-- <span>Normal</span> -->
+                    </div>
+                </div>
+                <div class="sensor-display">
+                    <div class="pressure-display">
+                        <div class="pressure-value">
+                            <span id="pressureValue">--</span>
+                            <span class="unit">kg</span>
+                        </div>
+                        <div class="foot-pressure">
+                            <div class="foot-outline">
+                                <div class="pressure-point" data-point="heel" id="heelPressure"></div>
+                                <div class="pressure-point" data-point="arch" id="archPressure"></div>
+                                <div class="pressure-point" data-point="toe" id="toePressure"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+
+
+
+<!-- <div class="location-wrapper">
+  <h1 class="location-title">My Live Location </h1>
+  <div class="map-img-container">
+    <img
+      id="map-image"
+      src="https://lh3.googleusercontent.com/x25pR38DgqbbzKYQElNelWOwLzn3uWxka98uZjVfpleoblKtT-LLSkgxlmykee32F9ZgMEJC6QRJC1nQbBaYwQtTu9v4N8UvnGi274o=w450"
+      alt="Live Location Demo Map"
+    />
+  </div>
+</div> -->
+<!-- Put this in your HTML where you want the map -->
+  </div>
+<div class="location-wrapper">
+
+  <div class="threat-display" style="text-align:center; margin-top:2rem;">
+    <h2 style="color:#ef4444; font-size:1.5rem;">Threat Level</h2>
+    <div class="temp-bar" style="width:80%; margin:0 auto;">
+      <div class="temp-fill" id="threatBar" style="width:0%"></div>
+    </div>
+    <div style="margin-top:0.5rem; color:#fff; font-size:1.2rem;">
+      <span id="threatValue">--</span> 
+    </div>
+    <canvas id="threatChart" style="max-width:90%; margin-top:1.5rem;"></canvas>
+       <!-- Test Button -->
+    <!-- <button id="testAlertBtn" style="margin-top:20px; padding:10px 20px; background:#ef4444; color:white; border:none; border-radius:5px; cursor:pointer;">
+      🔥 Trigger Test Threat
+    </button> -->
+  </div>
+</div>
+
+
+
+
+ 
+
+
+
+
+<!-- ====================================== -->
+<!-- 🧠 Smart Analyzer Section -->
+
+<!-- <div class="analyzer-container">
+  <div class="title">
+    <i class="fas fa-brain"></i>
+    <span>Condition Analyzer</span>
+  </div> -->
+
+  <!-- Logic Output Grid (JS will inject steps here) -->
+  <div id="logicGrid" class="grid-boxes">
+    <!-- Dynamic condition boxes from JS will appear here -->
+  </div>
+
+  <!-- Risk Alert Box -->
+  <div class="alert-box hidden" id="alertNotification">
+    <div class="alert-title" id="decisionTitle">
+      <i class="fas fa-siren-on"></i> SYSTEM SAFE
+    </div>
+    <p id="decisionDesc">All parameters within normal range.</p>
+    <button class="cancel-btn emergency-btn inactive" id="emergencyBtn">
+      <i class="fas fa-shield-alt"></i> <span>System Safe</span>
+    </button>
+  </div>
+</div>
+
+
+        
+
+
+<!-- Bottom Navigation Bar -->
+<!-- ✅ Bottom Navigation Bar -->
+<div style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #06062f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 1000;
+  border-top: 2px solid #ffffff33;
+">
+<script>
+  function navigateTo(path) {
+    window.location.href = path;
+  }
+</script>
+
+  <!-- Home Button -->
+  <button onclick="navigateTo('index.html')"
+    style="background: none; border: none; color: white; font-size: 14px; display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+    <i class="fas fa-home" style="font-size: 18px; margin-bottom: 4px;"></i>
+    <span>Home</span>
+  </button>
+
+  <!-- User Details Button -->
+  <button onclick="navigateTo('/WomenDashboard')"
+    style="background: none; border: none; color: white; font-size: 14px; display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+    <i class="fas fa-id-card" style="font-size: 18px; margin-bottom: 4px;"></i>
+    <span>User Details</span>
+  </button>
+
+</div>
+
+
+        <!-- Status Messages -->
+        <div class="status-messages" id="statusMessages"></div>
+    <!-- </div> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
+
+
+

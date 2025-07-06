@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blossom – Women Safety Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+     <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i> Women Safety
+    </div>
+    <a href="#" class="about-link" onclick="showAbout()">
+      <i class="fas fa-circle-info"></i> About
+    </a>
+  </div>
+  <div class="page-container">
+    <div class="form-header">
+      <h1 class="form-title"><i class="fas fa-shield-alt"></i> Women Safety</h1>
+      <p class="form-subtitle">Sign in to your Women Safety account</p>
+    </div>
+
+    <form id="loginForm" class="form">
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required placeholder="Enter your password">
+      </div>
+
+      <div class="forgot-password">
+        <button type="button" id="forgotPasswordBtn" class="link-btn">Forgot Password?</button>
+      </div>
+
+      <button type="submit" class="btn-primary"> <p><a href="/WomenDashboard">Sign In</a></p></button>
+    </form>
+
+    <div class="form-footer">
+      <p>Don't have an account? <a href="/WomenRegistration">Join Women Safety</a></p>
+    </div>
+  </div>
+    <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="/WomenRegistration" onclick="scrollToSection('women')">
+      <i class="fas fa-female"></i>
+      <span>Women</span>
+    </a>
+    <a href="/volunteer-register" onclick="scrollToSection('volunteer')">
+      <i class="fas fa-hands-helping"></i>
+      <span>Volunteer</span>
+    </a>
+    <a href="/pulish_registration" onclick="scrollToSection('police')">
+      <i class="fas fa-user-shield"></i>
+      <span>Police</span>
+    </a>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
+ <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460, #533483, #7209b7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #a855f7;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-title {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ff2e63, #9c49e5, #c1bacf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-subtitle {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .form-group input::placeholder {
+      color: #aaa;
+    }
+
+    .forgot-password {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: #f472b6;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .link-btn:hover {
+      color: #f9a8d4;
+    }
+
+    .btn-primary {
+      background-color: #a855f7;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #9333ea;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .form-footer a {
+      color: #f472b6;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+     /* Top Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0f172a;
+      border-bottom: 1px solid #444;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #ff2e63, #8e2de2, #4a00e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+      color: #ff2e63;
+    }
+
+    .about-link {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #e8e3ec;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    .about-link i {
+      font-size: 1.2rem;
+    }
+
+    .about-link:hover {
+      color: #f472b6;
+      background: rgba(244, 114, 182, 0.1);
+      transform: translateY(-2px);
+    }
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #0f172a;
+      display: flex;
+      justify-content: space-around;
+      padding: 14px 0;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+      z-index: 50;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.3s ease;
+      font-size: 1.6rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .bottom-nav a span {
+      font-size: 0.8rem;
+    }
+
+    .bottom-nav a:hover {
+      color: #f8bbd9;
+      transform: scale(1.1);
+      background: rgba(248, 187, 217, 0.1);
+    }
+
+  </style>

@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <!-- Favicon fully removed -->
+  <link rel="icon" href="data:,">
+
+  <!-- Fonts and icons (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+  
+  
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Top Navbar -->
+<div class="navbar" id="navbar">
+  <div class="logo">
+     <i class="fas fa-shield-alt gradient-text"></i> Women Safety
+  </div>
+  <a href="#" class="about-link" onclick="showAbout()">
+    <i class="fa-solid fa-circle-info"></i> About
+  </a>
+</div>
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Welcome to Women Safety Community</h1>
+    <p class="subtitle">Empowering women with safety, support, and secure connectivity through our dedicated platform. Join our community and make a difference.</p>
+
+    <div class="main-box">
+      <div class="icon pulse-animation"><i class="fas fa-female"></i></div>
+      
+      <h2>Women Register and Connect to Your Device</h2>
+      <p>Access a secure and private environment just for women. Connect with nearby volunteers and police for immediate assistance when needed. Your safety is our priority.</p>
+     <script>
+  function navigateToDevice() {
+    window.location.href = "/DeviseDeshboard";
+  }
+</script>
+
+   
+  <!-- <a href="/DeviseDeshboard" style="
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #00c9ff, #92fe9d); /* Neon blue-green gradient */
+    color: #0f172a;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 255, 200, 0.4);
+    transition: all 0.3s ease;
+  " 
+  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0,255,200,0.6)'"
+  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(0,255,200,0.4)'"
+  >
+    <i class="fas fa-microchip"></i>
+    <span>My Device Control</span>
+  </a> -->
+  
+
+   <p class="Device">
+    
+  <a href="/DeviseDeshboard" class="btn primary" >
+         <i class="fas fa-microchip"></i>My Device Control
+        </a>
+</p>
+
+      <div class="btn-group">
+        <a href="/WomenRegistration" class="btn primary" onclick="handleRegister('women')">
+          <i class="fas fa-user-plus"></i> Register Now
+        </a>
+        <a href="/WomenLogin" class="btn secondary" onclick="handleLogin('women')">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </div>
+    </div>
+
+    <div class="roles-section">
+      <div class="role-box volunteer">
+        <div class="icon"><i class="fas fa-hands-helping"></i></div>
+        <h3>Volunteer Helper</h3>
+        <p>
+          As a volunteer, you'll be alerted when any woman nearby (within 500 meters) is in distress. 
+          Your role is to reach the location quickly and help her stay safe until further assistance arrives. Be a hero in your community.
+        </p>
+        <div class="btn-group">
+          <a href="/volunteer-register" class="btn primary" onclick="handleRegister('volunteer')">
+            <i class="fas fa-user-plus"></i> Join Us
+          </a>
+          <a href="/volunteer-login" class="btn secondary" onclick="handleLogin('volunteer')">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </div>
+      </div>
+
+      <div class="role-box police">
+        <div class="icon"><i class="fas fa-user-shield"></i></div>
+        <h3>Police Officer</h3>
+        <p>
+          Respond to emergency reports and help keep women safe. Get real-time notifications about incidents in your jurisdiction and coordinate rescue operations effectively. Protect and serve.
+        </p>
+        <div class="btn-group">
+          <a href="/pulish_registration" class="btn primary" onclick="handleRegister('police')">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+          <a href="/Police_login" class="btn secondary" onclick="handleLogin('police')">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="/WomenRegistration" onclick="scrollToSection('women')">
+      <i class="fas fa-female"></i>
+      <span>Women</span>
+    </a>
+    <a href="/volunteer-register" onclick="scrollToSection('volunteer')">
+      <i class="fas fa-hands-helping"></i>
+      <span>Volunteer</span>
+    </a>
+    <a href="/pulish_registration" onclick="scrollToSection('police')">
+      <i class="fas fa-user-shield"></i>
+      <span>Police</span>
+    </a>
+  </div>
+
+  <script>
+    // Loading animation
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('loadingOverlay').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Create floating particles
+    function createParticles() {
+      const particles = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particles.appendChild(particle);
+      }
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Initialize particles
+    createParticles();
+
+    // Placeholder functions
+    function showAbout() {
+      alert('Women Safety Community - A comprehensive platform for women\'s safety and security. Connect with volunteers and police for immediate assistance when needed.');
+    }
+
+    function handleRegister(type) {
+      alert(`Opening registration for ${type}...`);
+    }
+
+    function handleLogin(type) {
+      alert(`Opening login for ${type}...`);
+    }
+
+    function scrollToSection(section) {
+      const element = document.querySelector(`.${section === 'women' ? 'main-box' : 'role-box.' + section}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Add smooth scrolling for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+<style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e, #0f3460, #533483, #7209b7);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Background Animation */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+    }
+
+    /* Top Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 46, 99, 0.2);
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, #ff2e63, #ff6b96, #8e2de2, #4a00e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      color: #ff2e63;
+      /* filter: drop-shadow(0 0 10px rgba(255, 46, 99, 0.5)); */
+      /* animation: glow 2s ease-in-out infinite alternate; */
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px rgba(255, 46, 99, 0.5)); }
+      to { filter: drop-shadow(0 0 15px rgba(255, 46, 99, 0.8)); }
+    }
+
+    .about-link {
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #e8e3ec;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.4s ease;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .about-link:hover::before {
+      left: 100%;
+    }
+
+    .about-link:hover {
+      color: #f472b6;
+      background: rgba(244, 114, 182, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(244, 114, 182, 0.3);
+    }
+
+ .container {
+  max-width: 1000px;
+  margin: 8rem auto 6rem auto;
+  padding: 1rem 2rem;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #ff2e63, #ff6b96, #9c49e5, #c1bacf, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out, textGlow 3s ease-in-out infinite;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+@keyframes textGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 46, 99, 0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(255, 46, 99, 0.6)); }
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #d1d5db;
+  animation: fadeInUp 1s ease-out 0.2s both;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.main-box,
+.role-box {
+  background: linear-gradient(145deg, rgba(22, 2, 41, 0.6), rgba(38, 54, 149, 0.6));
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 270px; /* reduce height here */
+}
+
+.main-box::before,
+.role-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.main-box:hover::before,
+.role-box:hover::before {
+  opacity: 1;
+}
+
+.main-box {
+  border: 2px solid rgba(255, 46, 99, 0.4);
+  animation: fadeInUp 1s ease-out 0.4s both;
+  background: linear-gradient(145deg, rgba(255, 46, 99, 0.1), rgba(38, 54, 149, 0.6));
+}
+
+.main-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(255, 46, 99, 0.3);
+  border-color: rgba(255, 46, 99, 0.6);
+}
+
+.role-box {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  border: 2px solid transparent;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.role-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.role-box.volunteer { 
+  border-color: rgba(139, 92, 246, 0.4);
+  background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(38, 54, 149, 0.6));
+}
+
+.role-box.volunteer:hover {
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+.role-box.police { 
+  border-color: rgba(59, 130, 246, 0.4);
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(38, 54, 149, 0.6));
+}
+
+.role-box.police:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.icon {
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.main-box:hover .icon,
+.role-box:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+}
+
+.main-box .icon {
+  color: #ff6b96;
+  animation: pulse 2s infinite;
+}
+
+.role-box.volunteer .icon {
+  color: #a855f7;
+}
+
+.role-box.police .icon {
+  color: #3b82f6;
+}
+
+.main-box h2,
+.role-box h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-box p,
+.role-box p {
+  font-size: 1rem;
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #a855f7, #8b5cf6, #7c3aed);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.btn.primary:hover {
+  background: linear-gradient(135deg, #9333ea, #7c3aed, #6d28d9);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.6);
+}
+
+.btn.secondary {
+  background: linear-gradient(135deg, #1e293b, #334155, #475569);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn.secondary:hover {
+  background: linear-gradient(135deg, #334155, #475569, #64748b);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.roles-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+    /* Bottom Navigation */
+   .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 0;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  border-top: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.bottom-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.4s ease;
+  font-size: 1.4rem;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.bottom-nav a span {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.bottom-nav a:hover {
+  color: #f8bbd9;
+  transform: scale(1.1) translateY(-3px);
+  background: rgba(248, 187, 217, 0.15);
+  box-shadow: 0 6px 20px rgba(248, 187, 217, 0.25);
+}
+
+    /* Enhanced Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 46, 99, 0.3);
+      border-top: 3px solid #ff2e63;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+   /* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    margin: 6.5rem auto 5rem auto;
+    padding: 0.8rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .main-box,
+  .role-box {
+    padding: 1.4rem;
+    margin-bottom: 1.5rem;
+    min-height: 220px; /* reduced height */
+  }
+
+  .roles-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .bottom-nav a {
+    font-size: 1.3rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .main-box h2,
+  .role-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .icon {
+    font-size: 2.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .main-box,
+  .role-box {
+    padding: 1.2rem;
+    min-height: 200px; /* further reduced for small screens */
+  }
+
+  .main-box p,
+  .role-box p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.2rem;
+  }
+}
+
+  </style>
