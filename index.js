@@ -77,37 +77,34 @@ app.get("/Adminpanal", (req, res) => {
 // ==========================
 
 require('dotenv').config();
-
 const nodemailer = require("nodemailer");
-
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-        user: process.env.EMAIL_USER,
+    user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
-
   },
 });
-
 
 app.post("/send-alert", async (req, res) => {
   const { to, subject, html } = req.body;
 
   try {
     const info = await transporter.sendMail({
-      from: '"Safety Alert System" <your-email@gmail.com>',
+      from: `"Safety Alert System" <${process.env.EMAIL_USER}>`,
       to,
       subject,
-      html, //  send HTML email body
+      html,
     });
 
+    console.log("✅ Email sent successfully:", info.messageId);
     res.json({ success: true, messageId: info.messageId });
   } catch (error) {
+    console.error("❌ Email send failed:", error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
-
 
 
 

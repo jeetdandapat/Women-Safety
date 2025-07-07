@@ -313,6 +313,7 @@ function handleSensorData(event) {
 
 
 
+
 // === Show alert box when threat is high
 function showThreatAlert() {
   el.alertBox.classList.remove('hidden');
@@ -321,6 +322,8 @@ function showThreatAlert() {
   el.decisionDesc.textContent = 'Message sent to Police & Volunteers within 500m!';
   el.emergencyBtn.classList.remove('inactive');
   el.emergencyBtn.innerHTML = '<i class="fas fa-times"></i> Cancel Alert';
+   // bind the click (only once!)
+  el.emergencyBtn.onclick = handleCancelAlert;
 }
 
 // === Reset UI when threat clears
@@ -392,16 +395,16 @@ function updateThreatChart(value) {
 
 function handleCancelAlert() {
   if (!threatTriggered) {
-    //  No alert to cancel
+    // 🚫 No alert to cancel
     console.log("ℹ️ No active alert. System already safe.");
     return;
   }
 
-  //  Proceed to cancel the alert
+  // ✅ Proceed to cancel the alert
   hideThreatAlert(); // Only hide UI
   showStatus('🚨 Alert cancelled. Monitoring continues...', 'info'); // Optional UI status
 
-  // Send email that alert was manually cancelled
+  // ✅ Send email that alert was manually cancelled
   fetch("http://localhost:8080/send-alert", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
