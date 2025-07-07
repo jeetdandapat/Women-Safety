@@ -202,7 +202,7 @@ function handleSensorData(event) {
       });
     }
 
-    // === 🚨 Display Threat Score (0–100)
+    // ===  Display Threat Score (0–100)
     if (typeof incoming.threat === 'number') {
       el.threatValue.textContent = incoming.threat;
       el.threatBar.style.width = `${incoming.threat}%`;
@@ -217,13 +217,23 @@ function handleSensorData(event) {
         el.threatStatus.className = 'sensor-status safe';
       }
     }
+// popup show
+    function showEmergencyPopup(message) {
+  const popup = document.getElementById('emergencyPopup');
+  popup.textContent = message;
+  popup.style.display = 'block';
+
+  setTimeout(() => {
+    popup.style.display = 'none';
+  }, 4000); // Hide after 4 seconds
+}
 
    if (typeof incoming.sos === 'number') {
 
   // === SOS Code 1: Physical Threat or Assault Attempt
   if (incoming.sos === 1) {
     showThreatAlert();
-    showStatus('🚨 Emergency Detected! Sending Help Alert...', 'warning');
+    showEmergencyPopup('🚨 Emergency Detected! Sending Help Alert...', 'warning');
 
     fetch("http://localhost:8080/send-alert", {
       method: "POST",
@@ -256,7 +266,7 @@ function handleSensorData(event) {
   // === SOS Code 2: Misbehavior Alert
   else if (incoming.sos === 2) {
     showThreatAlert();
-    showStatus('🚨 Misbehavior Alert! Sending Alert Email...', 'danger');
+    showEmergencyPopup('🚨 Misbehavior Alert! Sending Alert Email...', 'danger');
 
     fetch("http://localhost:8080/send-alert", {
       method: "POST",
@@ -382,16 +392,16 @@ function updateThreatChart(value) {
 
 function handleCancelAlert() {
   if (!threatTriggered) {
-    // 🚫 No alert to cancel
+    //  No alert to cancel
     console.log("ℹ️ No active alert. System already safe.");
     return;
   }
 
-  // ✅ Proceed to cancel the alert
+  //  Proceed to cancel the alert
   hideThreatAlert(); // Only hide UI
   showStatus('🚨 Alert cancelled. Monitoring continues...', 'info'); // Optional UI status
 
-  // ✅ Send email that alert was manually cancelled
+  // Send email that alert was manually cancelled
   fetch("http://localhost:8080/send-alert", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
