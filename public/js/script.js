@@ -14,7 +14,7 @@ let sensorData = {
   thermal: { value: null, status: 'normal' },
   pulse: { value: null, status: 'normal' },
   proximity: { value: null, status: 'safe' },
-  motion: { steps: 0, x: 0, y: 0, z: 0, status: 'stationary' },
+  motion: {  x: 0, y: 0, z: 0, status: 'stationary' },
   pressure: { weight: 0, status: 'normal' }
 };
 
@@ -233,7 +233,7 @@ function handleSensorData(event) {
   // === SOS Code 1: Physical Threat or Assault Attempt
   if (incoming.sos === 1) {
     showThreatAlert();
-    showEmergencyPopup('🚨 Emergency Detected! Sending Help Alert...', 'warning');
+    showEmergencyPopup('Emergency Detected! Sending Help Alert...', 'warning');
 
     fetch("http://localhost:8080/send-alert", {
       method: "POST",
@@ -259,21 +259,21 @@ function handleSensorData(event) {
       })
     })
     .then(res => res.json())
-    .then(data => console.log("✅ SOS Email Sent:", data))
-    .catch(err => console.error("❌ SOS Email Error:", err));
+    .then(data => console.log("SOS Email Sent:", data))
+    .catch(err => console.error(" SOS Email Error:", err));
   }
 
   // === SOS Code 2: Misbehavior Alert
   else if (incoming.sos === 2) {
     showThreatAlert();
-    showEmergencyPopup('🚨 Misbehavior Alert! Sending Alert Email...', 'danger');
+    showEmergencyPopup(' Misbehavior Alert! Sending Alert Email...', 'danger');
 
     fetch("http://localhost:8080/send-alert", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         to: "dandapatjeet3@gmail.com",
-        subject: "🚨 Alert: Misbehavior with Girl Detected",
+        subject: " Alert: Misbehavior with Girl Detected",
         html: `
           <div style="font-family: Arial, sans-serif; color: #333;">
             <h2 style="color: red; font-size: 22px;">
@@ -316,34 +316,72 @@ function handleSensorData(event) {
 
 // === Show alert box when threat is high
 function showThreatAlert() {
+  threatTriggered = true;
   el.alertBox.classList.remove('hidden');
   el.alertBox.classList.add('danger');
+
   el.decisionTitle.innerHTML = '<i class="fas fa-siren-on"></i> ALERT TRIGGERED';
   el.decisionDesc.textContent = 'Message sent to Police & Volunteers within 500m!';
+
   el.emergencyBtn.classList.remove('inactive');
+  el.emergencyBtn.classList.remove('btn-green');
+  el.emergencyBtn.classList.add('btn-red'); // <-- Make it red
   el.emergencyBtn.innerHTML = '<i class="fas fa-times"></i> Cancel Alert';
-   // bind the click (only once!)
   el.emergencyBtn.onclick = handleCancelAlert;
 }
+
 
 // === Reset UI when threat clears
 function hideThreatAlert() {
   threatTriggered = false;
   el.alertBox.classList.add('hidden');
+  el.alertBox.classList.remove('danger');
+
   el.decisionTitle.innerHTML = '<i class="fas fa-shield-alt"></i> SYSTEM SAFE';
   el.decisionDesc.textContent = 'All parameters within normal range.';
+
   el.emergencyBtn.classList.add('inactive');
+  el.emergencyBtn.classList.remove('btn-red');
+  el.emergencyBtn.classList.add('btn-green'); // <-- Make it green
   el.emergencyBtn.innerHTML = '<i class="fas fa-shield-alt"></i> System Safe';
 }
 
+
 // === Handle cancel alert button
 function handleCancelAlert() {
-  // disconnectDevice();
+  if (!threatTriggered) {
+    console.log("ℹ No active alert. System already safe.");
+    return;
+  }
+
   hideThreatAlert();
-  showStatus('Alert cancelled .', 'info');
+  showStatus('Alert cancelled. Monitoring continues...', 'info');
+
+  // Send cancel email
+  fetch("http://localhost:8080/send-alert", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      to: "dandapatjeet3@gmail.com",
+      subject: "Alert Cancelled",
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2 style="color: green;">
+            <img src="https://img.icons8.com/emoji/48/check-mark-emoji.png" width="24" style="vertical-align: middle;" />
+            <span style="margin-left: 6px;">Alert Cancelled</span>
+          </h2>
+          <p><strong>Status:</strong> I am safe. Nothing happened to me. The device was accidentally triggered, and the alert has been cancelled.</p>
+          <p style="font-size: 13px; color: #777;">Time: ${new Date().toLocaleString()}</p>
+        </div>
+      `
+    })
+  })
+    .then(res => res.json())
+    .then(data => console.log(" Cancel email sent:", data))
+    .catch(err => console.error(" Cancel email error:", err));
 }
 
-// === Draw/update chart data
+// === Chart Initialization & Updating Function
 let threatChart = null;
 function updateThreatChart(value) {
   const ctx = el.threatChart;
@@ -389,41 +427,4 @@ function updateThreatChart(value) {
   }
 
   threatChart.update();
-}
-
-
-
-function handleCancelAlert() {
-  if (!threatTriggered) {
-    // 🚫 No alert to cancel
-    console.log("ℹ️ No active alert. System already safe.");
-    return;
-  }
-
-  // ✅ Proceed to cancel the alert
-  hideThreatAlert(); // Only hide UI
-  showStatus('🚨 Alert cancelled. Monitoring continues...', 'info'); // Optional UI status
-
-  // ✅ Send email that alert was manually cancelled
-  fetch("http://localhost:8080/send-alert", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      to: "dandapatjeet3@gmail.com",  // Your email
-      subject: "❌ Alert Cancelled",
-      html: `
-        <div style="font-family: Arial, sans-serif; color: #333;">
-          <h2 style="color: green;">
-            <img src="https://img.icons8.com/emoji/48/check-mark-emoji.png" width="24" style="vertical-align: middle;" />
-            <span style="margin-left: 6px;">Alert Cancelled</span>
-          </h2>
-          <p><strong>Status:</strong> I am safe. Nothing happened to me. The device was accidentally triggered, and the alert has been cancelled.</p>
-          <p style="font-size: 13px; color: #777;">Time: ${new Date().toLocaleString()}</p>
-        </div>
-      `
-    })
-  })
-    .then(res => res.json())
-    .then(data => console.log("✅ Cancel email sent:", data))
-    .catch(err => console.error("❌ Cancel email error:", err));
 }

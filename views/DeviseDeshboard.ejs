@@ -35,7 +35,7 @@
         
 
 <h2 style="text-align: center; font-size: 2rem; margin: 2rem 0; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: #e0f7fa;">
-  <i class="fa-solid fa-microchip" style="color: #c6f7ee; font-size: 2rem; animation: pulse 1.5s infinite;"></i>
+  <i class="fa-solid fa-microchip" style="color: #0f1110; font-size: 2rem; animation: pulse 1.5s infinite;"></i>
   <span style="color: #e565fc;">Active Stats</span>
 </h2>
 
@@ -106,7 +106,7 @@
                     <div class="motion-display">
                         <div class="motion-value">
                             <span id="motionValue"></span>
-                            <span class="unit">Steps</span>
+                            <!-- <span class="unit">Steps</span> -->
                         </div>
                         <div class="motion-bars">
                             <div class="motion-bar" data-axis="x">
@@ -217,7 +217,7 @@
                     <div class="pressure-display">
                         <div class="pressure-value">
                             <span id="pressureValue">--</span>
-                            <span class="unit">kg</span>
+                            <span class="unit">N</span>
                         </div>
                         <div class="foot-pressure">
                             <div class="foot-outline">
@@ -246,23 +246,107 @@
 </div> -->
 <!-- Put this in your HTML where you want the map -->
   </div>
-<div class="location-wrapper">
 
-  <div class="threat-display" style="text-align:center; margin-top:2rem;">
-    <h2 style="color:#ef4444; font-size:1.5rem;">Threat Level</h2>
-    <div class="temp-bar" style="width:80%; margin:0 auto;">
-      <div class="temp-fill" id="threatBar" style="width:0%"></div>
+
+<style>
+  .location-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .threat-display {
+    text-align: center;
+    background-color: #fef2f2;
+    border: 1px solid #ef4444;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+
+  .temp-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0 auto 10px;
+  }
+
+  .temp-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #ef4444;
+    transition: width 0.5s ease;
+  }
+
+  .threat-level {
+    color: #ef4444;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #threatValue {
+    color: #1f2937;
+    font-size: 1.2rem;
+  }
+
+  .chart-box {
+    margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+
+  #threatChart {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 200px;
+  }
+
+  @media (max-width: 600px) {
+    .threat-display {
+      padding: 1rem;
+    }
+
+    #threatChart {
+      max-height: 150px;
+    }
+
+    .threat-level {
+      font-size: 1.2rem;
+    }
+
+    #threatValue {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<div class="location-wrapper">
+  <div class="threat-display">
+    <h2 class="threat-level">Threat Level</h2>
+
+    <div class="temp-bar">
+      <div class="temp-fill" id="threatBar"></div>
     </div>
-    <div style="margin-top:0.5rem; color:#fff; font-size:1.2rem;">
-      <span id="threatValue">--</span> 
+
+    <div style="margin-top: 0.3rem;">
+      <span id="threatValue">--</span>
     </div>
-    <canvas id="threatChart" style="max-width:90%; margin-top:1.5rem;"></canvas>
-       <!-- Test Button -->
-    <!-- <button id="testAlertBtn" style="margin-top:20px; padding:10px 20px; background:#ef4444; color:white; border:none; border-radius:5px; cursor:pointer;">
-      🔥 Trigger Test Threat
-    </button> -->
+
+    <div class="chart-box">
+      <canvas id="threatChart"></canvas>
+    </div>
   </div>
 </div>
+
 
 
 

@@ -6,16 +6,10 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
+    background-color: #f2f0fa; /* Soft lavender */
     min-height: 100vh;
-    color: white;
+    color: #1a1a1a;
     line-height: 1.6;
-}
-
-.app {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1rem;
 }
 
 
@@ -39,9 +33,9 @@ body {
 
 .sensor-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(238, 237, 228, 0.05);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(4, 3, 22, 0.942);
     border-radius: 1.5rem;
     padding: 0.6rem; /* Slightly reduced padding */
     transition: all 0.3s ease;
@@ -114,7 +108,7 @@ body {
 }
 
 .sensor-icon {
-     font-size: 1.5rem; 
+     font-size: 2.5rem; 
     /* font-size: 2rem;
     margin-right: 1rem; */
 }
@@ -129,7 +123,7 @@ body {
 .sensor-info p {
     font-size: 0.75rem;
     /* font-size: 0.85rem; */
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(16, 14, 14, 0.6);
 }
 
 .sensor-status {
@@ -188,7 +182,7 @@ body {
 
 .gauge-unit {
    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(19, 17, 17, 0.7);
 }
 
 
@@ -197,45 +191,51 @@ body {
 /* Motion Display */
 .motion-display {
     text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.motion-value {
-    margin-bottom: 1.5rem;
-}
+/* .motion-value {
+    margin-bottom: 1rem;
+} */
 
-.motion-value span:first-child {
-    font-size: 2.5rem;
+/* .motion-value span:first-child {
+    font-size: 2rem;
     font-weight: 700;
     display: block;
-}
+} */
 
 .motion-bars {
     display: flex;
-    justify-content: space-around;
-    gap: 1rem;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .motion-bar {
-    flex: 1;
+    width: 15px;
     text-align: center;
 }
 
 .motion-bar label {
     display: block;
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin-top: 0.3rem;
+    color: rgba(6, 6, 6, 0.7);
 }
 
 .bar-fill {
-     height: 40px;
-    width: 15px;
+    height: 50px;
+    width: 100%;
     background: linear-gradient(to top, #06b6d4, #3b82f6);
-    border-radius: 10px;
-    margin: 0 auto;
+    border-radius: 5px;
     transform-origin: bottom;
     transition: transform 0.3s ease;
 }
+
 
 /* Proximity Display */
 .proximity-display {
@@ -261,7 +261,7 @@ body {
 }
 
 .proximity-waves {
-    position: relative; /* ✅ Changed from absolute */
+    position: relative; 
     width: 40px;
     height: 40px;
 }
@@ -306,7 +306,7 @@ body {
 }
 
 .temp-value span:first-child {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
     display: block;
 }
@@ -317,7 +317,7 @@ body {
 
 .temp-bar {
     height: 16px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(22, 21, 21, 0.1);
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 0.5rem;
@@ -334,20 +334,44 @@ body {
 .temp-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.75rem;
+    color: rgba(18, 15, 15, 0.6);
 }
 
+@media (max-width: 480px) {
+    .temp-fill {
+        height: 6px;          /* smaller height */
+        border-radius: 6px;
+    }
+
+    .temp-bar {
+        height: 8px;
+        border-radius: 6px;
+    }
+
+  .temp-labels {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    font-size: 1.75rem;
+    color: rgba(12, 11, 11, 0.6);
+}
+
+    .temp-scale {
+        transform: scale(0.65);
+        transform-origin: top center;
+        margin-top: -8px;
+    }
+}
 /* Pressure Display */
 .pressure-display {
     text-align: center;
-    transform: scale(0.85);         /* ✅ Scaled down to fit */
+    transform: scale(0.85);         
     transform-origin: top center;
-    margin-top: -5px;               /* ✅ Slight adjustment */
+    margin-top: -5px;               
 }
 
 .pressure-value span:first-child {
-    font-size: 2rem;                /* ✅ Reduced font */
+    font-size: 2rem;               
     font-weight: 700;
     display: block;
 }
@@ -358,8 +382,8 @@ body {
 
 .foot-outline {
     position: relative;
-    width: 50px;                    /* ✅ Smaller width */
-    height: 65px;                   /* ✅ Smaller height */
+    width: 50px;                   
+    height: 65px;                  
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 40px 40px 20px 20px;
@@ -367,7 +391,7 @@ body {
 
 .pressure-point {
     position: absolute;
-    width: 10px;                    /* ✅ Smaller point */
+    width: 10px;                  
     height: 10px;
     border-radius: 50%;
     background: #06b6d4;
@@ -444,7 +468,7 @@ body {
 }
 
 .label {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(7, 7, 7, 0.7);
 }
 
 .gps-visual {
@@ -776,7 +800,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: #f9f9ff;
+  color: #020214;
 }
 
 .box-header i {
@@ -793,7 +817,7 @@ ul {
 ul li {
   margin-bottom: 6px;
   font-size: 0.97rem;
-  color: #d4d4d8;
+  color: #01011a;
 }
 
 .highlight {
@@ -838,7 +862,7 @@ ul li {
 .alert-title {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #f472b6;
+  color: #040e01;
   margin-bottom: 0.6rem;
 }
 
@@ -847,18 +871,18 @@ ul li {
 }
 
 .alert-box p {
-  color: #e0e0e0;
+  color: #160303;
   font-size: 1rem;
   margin-bottom: 1.2rem;
 }
 
 /* Cancel Alert Button */
 .cancel-btn {
-  background: #e11d48;
+  background: #1de11d;
   border: none;
   padding: 0.8rem 1.6rem;
   border-radius: 10px;
-  color: #fff;
+  color: #170303;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -870,9 +894,19 @@ ul li {
 }
 
 .cancel-btn:hover {
-  background: #be123c;
+  background: #12be15;
 }
 
+/* Add this to your CSS file */
+.btn-green {
+  background-color: #16a34a !important; /* green-600 */
+  color: white;
+}
+
+.btn-red {
+  background-color: #dc2626 !important; /* red-600 */
+  color: white;
+}
 
 
 

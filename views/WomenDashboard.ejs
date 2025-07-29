@@ -1,648 +1,844 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Women UserDeshboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        /* .header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background:#2f6af4;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo i {
+            color: #f63ba5;
+            font-size: 1.5rem;
+        }
+
+        .user-icon {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-icon:hover {
+            color: #3b82f6;
+            transform: scale(1.1);
+        } */
+  /* Top Navbar */
+       .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+         background: #06062f;
+      border-bottom: 1px solid #444;
+      padding: 0.5rem 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+       background: linear-gradient(135deg, #d0c7d0, #f7f7ce, #8851fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+      color: #ff2e63;
+    }
+
+    .about-link {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #e8e3ec;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+        /* Container */
+        .container {
+            max-width: 580px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            padding-bottom: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgb(252, 252, 250);
+            border-radius: 20px;
+            padding: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #0a0d12;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        /* User Profile */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: rgb(8, 7, 7);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        .user-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .user-details p {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #64748b;
+            padding: 0.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .user-details p:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .user-details i {
+            color: #3b82f6;
+            width: 20px;
+            text-align: center;
+        }
+
+        .edit-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Section Titles */
+        .section-title {
+            color: #1e293b;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.25rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-row input {
+            flex: 1;
+            min-width: 150px;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+            color: #1e293b;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-row input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-row input::placeholder {
+            color: #94a3b8;
+        }
+
+        .add-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Contact List */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            background: #f8fafc;
+            padding: 1.25rem;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .contact-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1e293b;
+        }
+
+        .contact-info p {
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .contact-actions button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .edit-contact-btn {
+            background: #fbbf24;
+            color: #1f2937;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .call-btn {
+            background: #06b6d4;
+            color: white;
+        }
+
+        .chat-btn {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .contact-actions button:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Police Station */
+        .police-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .police-info {
+            color: #1e293b;
+        }
+
+        .police-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .police-info p:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .police-info p:first-child {
+            font-weight: 600;
+        }
+
+        .police-info i {
+            color: #3b82f6;
+            width: 20px;
+            text-align: center;
+        }
+
+        .call-police-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .call-police-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Volunteer Network */
+        .volunteer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .volunteer-item {
+            background: #f8fafc;
+            padding: 1.25rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .volunteer-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .volunteer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .volunteer-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1e293b;
+        }
+
+        .volunteer-distance {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #e2e8f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .volunteer-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .volunteer-actions button {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .volunteer-chat-btn {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .volunteer-call-btn {
+            background: #06b6d4;
+            color: white;
+        }
+
+        .volunteer-actions button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+               background: #06062f;
+            display: flex;
+            justify-content: space-around;
+            /* padding: 1rem 0; */
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .bottom-nav a:hover {
+            color: #0e1014;
+            transform: translateY(-2px);
+            background: rgba(220, 229, 243, 0.1);
+        }
+
+        .bottom-nav a span {
+            font-size: 0.8rem;
+        }
+
+        .bottom-nav a i {
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+                gap: 1.25rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-row input {
+                min-width: 100%;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .contact-actions {
+                align-self: stretch;
+                justify-content: center;
+            }
+
+            .volunteer-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .volunteer-actions {
+                align-self: stretch;
+            }
+
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Success animation */
+        @keyframes success {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-animation {
+            animation: success 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <div class="header">
+
+     <div class="navbar">
     <div class="logo">
-      <i class="fas fa-shield-alt"></i>
-       Safety
+      <i class="fas fa-shield-alt"></i> Women Safety
     </div>
-    <div class="user-icon">
-      <i class="fas fa-user"></i>
+    <a href="#" class="about-link" onclick="showAbout()">
+        <i class="fas fa-user"></i>
+    </a>
+  </div>
+   
+
+ <!-- Main Container -->
+<div class="container">
+  <!-- User Profile -->
+  <div class="card">
+    <div class="profile-content">
+      <div>
+        <div class="avatar">
+          <!-- First letter of user name -->
+          <%= user.name ? user.name.charAt(0).toUpperCase() : 'U' %>
+        </div>
+        <div class="user-name"><%= user.name %></div>
+      </div>
+      <div class="user-details">
+        <p><i class="fas fa-envelope"></i> <%= user.email %></p>
+        <p><i class="fas fa-map-marker-alt"></i> <%= user.address %></p>
+        <button class="edit-btn">
+          <i class="fas fa-edit"></i>
+          Edit Profile
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Main Container -->
-  <div class="container">
-    <!-- User Profile -->
-    <div class="card">
-      <div class="profile-content">
-        <div>
-          <div class="avatar">
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="user-name">XYZ</div>
-        </div>
-        <div class="user-details">
-          <p><i class="fas fa-envelope"></i> XYZ@email.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
-          <p><i class="fas fa-birthday-cake"></i> DOB: 12 Mar 2003</p>
-          <p><i class="fas fa-tint"></i> Blood Group: O+</p>
-          <!-- <p><i class="fas fa-heart"></i> Hobbies: Dancing, Singing</p> -->
-          <button class="edit-btn">
-            <i class="fas fa-edit"></i>
-            Edit Profile
-          </button>
-        </div>
+  <!-- Emergency Contacts -->
+  <div class="card">
+    <h3 class="section-title">
+      <i class="fas fa-phone-alt"></i> Emergency Contacts
+    </h3>
+
+    <!-- Add Contact Form -->
+    <form class="contact-form" action="/dashboard/add-contact" method="POST">
+      <div class="form-row">
+        <input type="text" name="contactName" placeholder="Name" required />
+        <input type="email" name="contactEmail" placeholder="Email Address" required />
+        <input type="tel" name="contactPhone" placeholder="Phone Number" required />
+        <input type="hidden" name="email" value="<%= user.email %>" />
+        <button type="submit" class="add-btn">
+          <i class="fas fa-plus"></i> Add
+        </button>
       </div>
+    </form>
+
+    <!-- List Contacts -->
+    <div class="contact-list" id="contactList">
+      <% if (user.emergencyContacts.length > 0) { %>
+        <% user.emergencyContacts.forEach(contact => { %>
+          <div class="contact-item">
+            <div class="contact-info">
+              <h4><i class="fas fa-user"></i> <%= contact.name %></h4>
+              <p><i class="fas fa-envelope"></i> <%= contact.email %></p>
+              <p><i class="fas fa-phone"></i> <%= contact.phone %></p>
+            </div>
+            <div class="contact-actions">
+              <!-- Actions -->
+              <button class="call-btn" title="Call" onclick="callContact('<%= contact.phone %>')">
+                <i class="fas fa-phone"></i>
+              </button>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No emergency contacts found.</p>
+      <% } %>
+    </div>
+  </div>
+<!-- </div> -->
+
+
+
+        <!-- Police Station -->
+        <div class="card">
+            <h3 class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                Nearest Police Station (within 500m)
+            </h3>
+            <div class="police-content">
+                <div class="police-info">
+                    <p><i class="fas fa-shield-alt"></i> xyz Police Station</p>
+                    <p><i class="fas fa-map-pin"></i> cjus,hy</p>
+                </div>
+                <a href="tel:100" class="call-police-btn">
+                    <i class="fas fa-phone"></i>
+                    Call Police (100)
+                </a>
+            </div>
+        </div>
+
+        <!-- Volunteer Network -->
+        <div class="card">
+            <h3 class="section-title">
+                <i class="fas fa-hands-helping"></i>
+                Registered Volunteers (within 500m)
+            </h3>
+            <div class="volunteer-grid">
+                <div class="volunteer-item">
+                    <div class="volunteer-header">
+                        <div class="volunteer-name">
+                            <i class="fas fa-user"></i>
+                            A
+                        </div>
+                        <div class="volunteer-distance">Distance: 200m</div>
+                    </div>
+                    <div class="volunteer-actions">
+                        <button class="volunteer-chat-btn" onclick="chatVolunteer('A')">
+                            <i class="fas fa-comment"></i>
+                            Chat
+                        </button>
+                        <button class="volunteer-call-btn" onclick="callVolunteer('A')">
+                            <i class="fas fa-phone"></i>
+                            Call
+                        </button>
+                    </div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-header">
+                        <div class="volunteer-name">
+                            <i class="fas fa-user"></i>
+                            B
+                        </div>
+                        <div class="volunteer-distance">Distance: 300m</div>
+                    </div>
+                    <div class="volunteer-actions">
+                        <button class="volunteer-chat-btn" onclick="chatVolunteer('B')">
+                            <i class="fas fa-comment"></i>
+                            Chat
+                        </button>
+                        <button class="volunteer-call-btn" onclick="callVolunteer('B')">
+                            <i class="fas fa-phone"></i>
+                            Call
+                        </button>
+                    </div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-header">
+                        <div class="volunteer-name">
+                            <i class="fas fa-user"></i>
+                            C
+                        </div>
+                        <div class="volunteer-distance">Distance: 450m</div>
+                    </div>
+                    <div class="volunteer-actions">
+                        <button class="volunteer-chat-btn" onclick="chatVolunteer('C')">
+                            <i class="fas fa-comment"></i>
+                            Chat
+                        </button>
+                        <button class="volunteer-call-btn" onclick="callVolunteer('C')">
+                            <i class="fas fa-phone"></i>
+                            Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Emergency Contacts -->
-    <div class="card">
-      <h3 class="emergency-title">
-        <i class="fas fa-phone-alt"></i>
-        Emergency Contacts
-      </h3>
-      <form class="contact-form">
-        <div class="form-row">
-          <input type="text" placeholder="Name" required />
-          <input type="tel" placeholder="Phone Number" required />
-          <button type="submit" class="add-btn">
-            <i class="fas fa-plus"></i>
-            Add
-          </button>
-        </div>
-      </form>
-      <div class="contact-list">
-        <div class="contact-item">
-          <div class="contact-info">
-            <h4><i class="fas fa-user"></i> abxc</h4>
-            <p><i class="fas fa-phone"></i> +91 9876543210</p>
-          </div>
-          <div class="contact-actions">
-            <button class="edit-contact-btn" title="Edit">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button class="delete-btn" title="Delete">
-              <i class="fas fa-trash"></i>
-            </button>
-            <button class="call-btn" title="Call">
-              <i class="fas fa-phone"></i>
-            </button>
-            <button class="chat-btn" title="Chat">
-              <i class="fas fa-comment"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Police Station -->
-    <div class="card">
-      <h3 class="emergency-title">
-        <i class="fas fa-shield-alt"></i>
-        Nearest Police Station (within 500m)
-      </h3>
-      <div class="police-content">
-        <div class="police-info">
-          <p><i class="fas fa-shield-alt"></i> xyz Police Station</p>
-          <p><i class="fas fa-map-pin"></i> cjus,hy</p>
-        </div>
-        <a href="tel:100" class="call-100-btn">
-          <i class="fas fa-phone"></i>
-          Call 
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="/" onclick="showToast('Home', 'You are on the home page')">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
         </a>
-      </div>
-    </div>
-
-    <!-- Volunteer Network -->
-    <div class="card">
-      <h3 class="emergency-title">
-        <i class="fas fa-hands-helping"></i>
-        Registered Volunteers (within 500m)
-      </h3>
-      <div class="volunteer-grid">
-        <div class="volunteer-item">
-          <div class="volunteer-header">
-            <div class="volunteer-name">
-              <i class="fas fa-user"></i>
-              A
-            </div>
-            <div class="volunteer-distance">Distance: 200m</div>
-          </div>
-          <div class="volunteer-actions">
-            <button class="volunteer-chat-btn">
-              <i class="fas fa-comment"></i>
-              Chat
-            </button>
-            <button class="volunteer-call-btn">
-              <i class="fas fa-phone"></i>
-              Call
-            </button>
-          </div>
-        </div>
-        <div class="volunteer-item">
-          <div class="volunteer-header">
-            <div class="volunteer-name">
-              <i class="fas fa-user"></i>
-              B
-            </div>
-            <div class="volunteer-distance">Distance: 300m</div>
-          </div>
-          <div class="volunteer-actions">
-            <button class="volunteer-chat-btn">
-              <i class="fas fa-comment"></i>
-              Chat
-            </button>
-            <button class="volunteer-call-btn">
-              <i class="fas fa-phone"></i>
-              Call
-            </button>
-          </div>
-        </div>
-        <div class="volunteer-item">
-          <div class="volunteer-header">
-            <div class="volunteer-name">
-              <i class="fas fa-user"></i>
-              C
-            </div>
-            <div class="volunteer-distance">Distance: 450m</div>
-          </div>
-          <div class="volunteer-actions">
-            <button class="volunteer-chat-btn">
-              <i class="fas fa-comment"></i>
-              Chat
-            </button>
-            <button class="volunteer-call-btn">
-              <i class="fas fa-phone"></i>
-              Call
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="bottom-nav">
-  <a href="/">
-    <i class="fas fa-home"></i>
-    <span>Home</span>
-  </a>
-  
-  <a href="/DeviseDeshboard">
+         <a href="/DeviseDeshboard">
     <i class="fas fa-microchip"></i>
     <span>My Device Control</span>
   </a>
+<a href="/logout" onclick="showToast('Logout', 'Logging out...')">
+  <i class="fas fa-sign-out-alt"></i>
+  <span>Logout</span>
+</a>
 
-  <a href="/">
-    <i class="fas fa-sign-out-alt"></i>
-    <span>Logout</span>
-  </a>
-</div>
 
- <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
-      color: white;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
+    </div>
 
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #0f172a;
-      padding: 12px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-    }
+    <!-- Toast Notification
+    <div id="toast" style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); transform: translateX(100%); transition: all 0.3s ease; z-index: 9999;">
+        <div id="toastTitle" style="font-weight: 600; margin-bottom: 0.25rem;"></div>
+        <div id="toastMessage" style="font-size: 0.9rem; opacity: 0.9;"></div>
+    </div> -->
 
-    .header .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #f8bbd9;
-    }
-
-    .header .user-icon {
-      color: white;
-      font-size: 24px;
-    }
-
-    /* Main Container */
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 16px;
-      padding-bottom: 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    /* Card Styles */
-    .card {
-      background: linear-gradient(145deg, rgba(20, 3, 35, 0.3), rgba(79, 70, 229, 0.3));
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 16px;
-      border-radius: 16px;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    /* User Profile */
-    .profile-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 16px;
-    }
-
-    .avatar {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #ec4899, #168ff9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      color: white;
-      margin-bottom: 8px;
-    }
-
-    .user-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: #f8bbd9;
-      margin-bottom: 16px;
-    }
-
-    .user-details {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .user-details p {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: white;
-    }
-
-.edit-btn {
-  background: linear-gradient(135deg, #0c6051, #2aa777);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;  /* ✅ Add this line */
-  gap: 8px;
-  transition: all 0.3s ease;
-}
-
-
-    .edit-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
-    }
-
-    /* Emergency Contacts */
-    .emergency-title {
-      color: #f8bbd9;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .form-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;          /* ✅ allows wrapping if space is less */
-  align-items: center;
-}
-
-
-    .form-row input {
-      flex: 1;
-      padding: 10px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 14px;
-    }
-
-    .form-row input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .add-btn {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-    }
-    .add-btn {
-  flex-shrink: 0;           /* ✅ prevents shrinking */
-  padding: 10px 14px;
-  font-size: 14px;
-}
-
-
-    .add-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-    }
-
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-item {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .contact-info h4 {
-      font-weight: bold;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .contact-info p {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .contact-actions {
-      display: flex;
-      gap: 4px;
-    }
-
-    .contact-actions button {
-      padding: 6px 8px;
-      border: none;
-      border-radius: 6px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 32px;
-      height: 32px;
-    }
-
-    .edit-contact-btn {
-      background: #fbbf24;
-      color: #1f2937;
-    }
-
-    .delete-btn {
-      background: #ef4444;
-      color: white;
-    }
-
-    .call-btn {
-      background: #06b6d4;
-      color: white;
-    }
-
-    .chat-btn {
-      background: #8b5cf6;
-      color: white;
-    }
-
-    .contact-actions button:hover {
-      transform: scale(1.1);
-    }
-    .form-row input {
-  min-width: 120px;         /* Ensures inputs don't shrink too much */
-}
-
-
-
-    /* Police Station */
-    .police-content {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .police-info {
-      color: white;
-    }
-
-    .police-info p {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .police-info p:first-child {
-      font-weight: bold;
-    }
-
-    .call-100-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: white;
-      border: none;
-      padding: 12px 16px;
-      border-radius: 24px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .call-100-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
-    }
-
-    /* Volunteer Network */
-    .volunteer-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .volunteer-item {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .volunteer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .volunteer-name {
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .volunteer-distance {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .volunteer-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .volunteer-actions button {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 16px;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.3s ease;
-    }
-
-    .volunteer-chat-btn {
-      background: #8b5cf6;
-      color: white;
-    }
-
-    .volunteer-call-btn {
-      background: #06b6d4;
-      color: white;
-    }
-
-    .volunteer-actions button:hover {
-      transform: scale(1.05);
-    }
-
-    /* Bottom Navigation */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #0f172a;
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
-      z-index: 50;
-      border-top: 1px solid rgba(168, 85, 247, 0.2);
-    }
-
-    .bottom-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding: 8px 16px;
-      transition: all 0.3s ease;
-    }
-
-    .bottom-nav a:hover {
-      color: #f8bbd9;
-      transform: scale(1.05);
-    }
-
-    .bottom-nav a span {
-      font-size: 12px;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 480px) {
-      .container {
-        padding: 12px;
-        gap: 20px;
-      }
-
-      .form-row {
-        flex-direction: column;
-      }
-
-      .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .contact-actions {
-        align-self: stretch;
-        justify-content: center;
-      }
-
-      .volunteer-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .volunteer-actions {
-        align-self: stretch;
-        justify-content: center;
-      }
-    }
-  </style>
+   
+</body>
+</html>

@@ -3,124 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Volunteer Registration – Blossom</title>
+  <title>Volunteer Login – Blossom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
-</head>
-<body>
-
-  <!-- Top Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <i class="fas fa-shield-alt"></i> Women Safety
-    </div>
-    <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
-  </div>
-
-  <!--  Volunteer Registration Form -->
-  <div class="page-container">
-    <div class="form-header">
-      <h1 class="form-title"><i class="fas fa-hands-helping"></i> Volunteer Signup</h1>
-      <p class="form-subtitle">Join as a registered community volunteer</p>
-    </div>
-
-    <form id="volunteerRegisterForm" class="form">
-      <div class="form-group">
-        <label>Full Name *</label>
-        <input type="text" required placeholder="Enter your name">
-      </div>
-
-      <div class="form-group">
-        <label>Age *</label>
-        <input type="number" required placeholder="Enter your age">
-      </div>
-
-      <div class="form-group">
-        <label>Mobile Number *</label>
-        <input type="tel" required placeholder="Enter your mobile number">
-      </div>
-
-      <div class="form-group">
-        <label>Email *</label>
-        <input type="email" required placeholder="Enter your email">
-      </div>
-
-      <div class="form-group">
-        <label>Password *</label>
-        <input type="password" required placeholder="Create a password">
-      </div>
-
-      <div class="form-group">
-        <label>Address *</label>
-        <input type="text" required placeholder="Enter your address">
-      </div>
-
-      <div class="form-group">
-        <label>Profile Photo</label>
-        <input type="file" accept="image/*">
-      </div>
-
-      <button type="submit" class="btn-primary">Register</button>
-    </form>
-
-    <div class="form-footer">
-      <p>Already registered? <a href="/volunteer-login">Login here</a></p>
-    </div>
-  </div>
-
-  <!--  Bottom Navigation -->
-  <div class="bottom-nav">
-    <a href="/WomenLogin">
-      <i class="fas fa-female"></i>
-      <span>Women</span>
-    </a>
-    <a href="/volunteer-login">
-      <i class="fas fa-hands-helping"></i>
-      <span>Volunteer</span>
-    </a>
-    <a href="/Police_login">
-      <i class="fas fa-user-shield"></i>
-      <span>Police</span>
-    </a>
-  </div>
-
-</body>
-</html>
-<style>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+
+     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #0f3460, #533483, #7209b7);
-      color: white;
+      background: linear-gradient(135deg, #eeeef4, #f8fafd, #f6f6f7, #fbfbfb);
+      color: rgb(10, 9, 9);
       min-height: 100vh;
       padding-top: 80px;
       padding-bottom: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #0f172a;
+       background: #09193e;
       border-bottom: 1px solid #444;
-      padding: 1rem 2rem;
+      padding: 1rem 1px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 999;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
     .logo {
       font-size: 1.6rem;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      background: linear-gradient(135deg, #ff2e63, #8e2de2, #4a00e0);
+      background: linear-gradient(135deg, #f6f1f6, #82788b, #1b2102);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .logo i { font-size: 1.8rem; color: #ff2e63; }
+
+    .logo i {
+      font-size: 1.8rem;
+      color: #ff2e63;
+    }
+
     .about-link {
       font-size: 1rem;
       text-decoration: none;
@@ -132,6 +62,7 @@
       padding: 8px 16px;
       border-radius: 8px;
     }
+
     .about-link:hover {
       color: #f472b6;
       background: rgba(244, 114, 182, 0.1);
@@ -140,10 +71,9 @@
 
     .page-container {
       width: 100%;
-      max-width: 520px;
-      margin: auto;
+      max-width: 420px;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(12, 11, 11, 0.05);
       border: 1px solid #3b82f6;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -163,14 +93,24 @@
 
     .form-subtitle {
       font-size: 1rem;
-      color: #ccc;
+      color: #121111;
     }
 
-    .form { display: flex; flex-direction: column; gap: 1.2rem; }
-    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
-    .form-group input, .form-group select {
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input {
       width: 100%;
-      padding: 0.7rem;
+      padding: 0.75rem;
       border-radius: 8px;
       border: none;
       outline: none;
@@ -178,7 +118,11 @@
       color: white;
       font-size: 1rem;
     }
-    .form-group input::placeholder { color: #aaa; }
+
+    .form-group input::placeholder {
+      color: #aaa;
+    }
+
     .btn-primary {
       background-color: #3b82f6;
       padding: 0.75rem;
@@ -190,16 +134,22 @@
       color: white;
       transition: background-color 0.3s ease;
     }
-    .btn-primary:hover { background-color: #2563eb; }
+
+    .btn-primary:hover {
+      background-color: #2563eb;
+    }
+
     .form-footer {
       text-align: center;
       margin-top: 1.5rem;
       font-size: 0.95rem;
     }
+
     .form-footer a {
       color: #60a5fa;
       text-decoration: none;
     }
+
     .form-footer a:hover {
       text-decoration: underline;
     }
@@ -209,14 +159,15 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #0f172a;
+      background: #09193e;
       display: flex;
       justify-content: space-around;
-      padding: 14px 0;
+      /* padding: 10px 0; */
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
       z-index: 50;
       border-top: 1px solid rgba(168, 85, 247, 0.2);
     }
+
     .bottom-nav a {
       color: white;
       text-decoration: none;
@@ -231,10 +182,69 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    .bottom-nav a span { font-size: 0.8rem; }
+
+    .bottom-nav a span {
+      font-size: 0.8rem;
+    }
+
     .bottom-nav a:hover {
       color: #f8bbd9;
       transform: scale(1.1);
       background: rgba(248, 187, 217, 0.1);
     }
   </style>
+</head>
+<body>
+
+  <!--  Top Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i> Women Safety
+    </div>
+    <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
+  </div>
+
+  <!-- Login Form -->
+  <div class="page-container">
+    <div class="form-header">
+      <h1 class="form-title"><i class="fas fa-hands-helping"></i>  Volunteer Login</h1>
+      <p class="form-subtitle">Sign in to your volunteer account</p>
+    </div>
+
+    <form id="volunteerLoginForm" class="form">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" required placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required placeholder="Enter your password">
+      </div>
+
+      <button type="submit" class="btn-primary"> <a href="/Volunteer_Deshboar">Login</a></button>
+    </form>
+
+    <div class="form-footer">
+      <p>New Volunteer? <a href="/volunteer-register">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href=" /WomenLogin">
+      <i class="fas fa-female"></i>
+      <span>Women</span>
+    </a>
+    <a href="/volunteer-login ">
+      <i class="fas fa-hands-helping"></i>
+      <span>Volunteer</span>
+    </a>
+    <a href="/Police_login ">
+      <i class="fas fa-user-shield"></i>
+      <span>Police</span>
+    </a>
+  </div>
+
+</body>
+</html>

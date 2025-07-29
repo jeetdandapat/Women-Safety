@@ -6,69 +6,13 @@
   <title>Volunteer Login – Blossom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
- 
-</head>
-<body>
-
-  <!--  Top Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <i class="fas fa-shield-alt"></i> Women Safety
-    </div>
-    <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
-  </div>
-
-  <!-- Login Form -->
-  <div class="page-container">
-    <div class="form-header">
-      <h1 class="form-title"><i class="fas fa-hands-helping"></i>  Volunteer Login</h1>
-      <p class="form-subtitle">Sign in to your volunteer account</p>
-    </div>
-
-    <form id="volunteerLoginForm" class="form">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" required placeholder="Enter your email">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" required placeholder="Enter your password">
-      </div>
-
-      <button type="submit" class="btn-primary"> <a href=" /Volunteer_Deshboard">Login</a></button>
-    </form>
-
-    <div class="form-footer">
-      <p>New Volunteer? <a href="/volunteer-register">Register here</a></p>
-    </div>
-  </div>
-
-  <!--  Bottom Navigation -->
-  <div class="bottom-nav">
-    <a href="/WomenLogin">
-      <i class="fas fa-female"></i>
-      <span>Women</span>
-    </a>
-    <a href="/volunteer-login">
-      <i class="fas fa-hands-helping"></i>
-      <span>Volunteer</span>
-    </a>
-    <a href="/Police_login">
-      <i class="fas fa-user-shield"></i>
-      <span>Police</span>
-    </a>
-  </div>
-
-</body>
-</html>
- <style>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
+     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #0f3460, #533483, #7209b7);
-      color: white;
+      background: linear-gradient(135deg, #eeeef4, #f8fafd, #f6f6f7, #fbfbfb);
+      color: rgb(10, 9, 9);
       min-height: 100vh;
       padding-top: 80px;
       padding-bottom: 80px;
@@ -81,9 +25,9 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #0f172a;
+      background: #2f6af4;
       border-bottom: 1px solid #444;
-      padding: 1rem 2rem;
+      padding: 1rem 1px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -97,7 +41,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      background: linear-gradient(135deg, #ff2e63, #8e2de2, #4a00e0);
+      background: linear-gradient(135deg, #d31bcd, #080709, #0c0221);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -149,7 +93,7 @@
 
     .form-subtitle {
       font-size: 1rem;
-      color: #ccc;
+      color: #121111;
     }
 
     .form {
@@ -215,10 +159,10 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #0f172a;
+      background: #2f6af4;
       display: flex;
       justify-content: space-around;
-      padding: 14px 0;
+      /* padding: 10px 0; */
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
       z-index: 50;
       border-top: 1px solid rgba(168, 85, 247, 0.2);
@@ -249,3 +193,58 @@
       background: rgba(248, 187, 217, 0.1);
     }
   </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i> Women Safety
+    </div>
+    <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
+  </div>
+
+  <!-- Login Form -->
+  <div class="page-container">
+    <div class="form-header">
+      <h1 class="form-title"><i class="fas fa-hands-helping"></i>  Volunteer Login</h1>
+      <p class="form-subtitle">Sign in to your volunteer account</p>
+    </div>
+
+    <form id="volunteerLoginForm" class="form">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" required placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required placeholder="Enter your password">
+      </div>
+
+      <button type="submit" class="btn-primary"> <a href="Volunteer_Deshboard.html">Login</a></button>
+    </form>
+
+    <div class="form-footer">
+      <p>New Volunteer? <a href="volunteer-register.html">Register here</a></p>
+    </div>
+  </div>
+
+  <!--  Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="girlLogin.html">
+      <i class="fas fa-female"></i>
+      <span>Women</span>
+    </a>
+    <a href="volunteer-login.html">
+      <i class="fas fa-hands-helping"></i>
+      <span>Volunteer</span>
+    </a>
+    <a href="olice-login.html">
+      <i class="fas fa-user-shield"></i>
+      <span>Police</span>
+    </a>
+  </div>
+
+</body>
+</html>
