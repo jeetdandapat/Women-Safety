@@ -39,8 +39,8 @@ app.use(
 // MongoDB Connection
 // ==========================
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.error("❌ MongoDB Connection Failed:", err));
+  .then(() => console.log(" MongoDB Connected"))
+  .catch(err => console.error(" MongoDB Connection Failed:", err));
 
 // ==========================
 // Route Files
