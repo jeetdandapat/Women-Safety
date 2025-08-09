@@ -211,19 +211,22 @@
       <p class="form-subtitle">Sign in to your volunteer account</p>
     </div>
 
-    <form id="volunteerLoginForm" class="form">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" required placeholder="Enter your email">
-      </div>
+  <form method="POST" action="/volunteer-login" class="form">
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" required placeholder="Enter your password">
-      </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" required placeholder="Enter your email">
+  </div>
 
-      <button type="submit" class="btn-primary"> <a href="Volunteer_Deshboard.html">Login</a></button>
-    </form>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" required placeholder="Enter your password">
+  </div>
+
+  <button type="submit" class="btn-primary">Login</button>
+
+</form>
+
 
     <div class="form-footer">
       <p>New Volunteer? <a href="volunteer-register.html">Register here</a></p>
@@ -232,15 +235,15 @@
 
   <!--  Bottom Navigation -->
   <div class="bottom-nav">
-    <a href="girlLogin.html">
+    <a href="/">
       <i class="fas fa-female"></i>
       <span>Women</span>
     </a>
-    <a href="volunteer-login.html">
+    <a href="/">
       <i class="fas fa-hands-helping"></i>
       <span>Volunteer</span>
     </a>
-    <a href="olice-login.html">
+    <a href="/">
       <i class="fas fa-user-shield"></i>
       <span>Police</span>
     </a>

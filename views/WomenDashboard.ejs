@@ -737,7 +737,7 @@
             <div class="police-content">
                 <div class="police-info">
                     <p><i class="fas fa-shield-alt"></i> xyz Police Station</p>
-                    <p><i class="fas fa-map-pin"></i> cjus,hy</p>
+                    <p><i class="fas fa-map-pin"></i> zxy.ab</p>
                 </div>
                 <a href="tel:100" class="call-police-btn">
                     <i class="fas fa-phone"></i>
@@ -747,71 +747,45 @@
         </div>
 
         <!-- Volunteer Network -->
-        <div class="card">
-            <h3 class="section-title">
-                <i class="fas fa-hands-helping"></i>
-                Registered Volunteers (within 500m)
-            </h3>
-            <div class="volunteer-grid">
-                <div class="volunteer-item">
-                    <div class="volunteer-header">
-                        <div class="volunteer-name">
-                            <i class="fas fa-user"></i>
-                            A
-                        </div>
-                        <div class="volunteer-distance">Distance: 200m</div>
+<!-- Volunteer Network -->
+<div class="card">
+    <h3 class="section-title">
+        <i class="fas fa-hands-helping"></i>
+        Registered Volunteers
+    </h3>
+
+    <div class="volunteer-grid">
+    <% if (typeof volunteers !== 'undefined' && volunteers.length > 0) { %>
+        <% volunteers.forEach(vol => { %>
+            <div class="volunteer-item">
+                <div class="volunteer-header">
+                    <div class="volunteer-name">
+                        <i class="fas fa-user"></i>
+                        <%= vol.name %>
                     </div>
-                    <div class="volunteer-actions">
-                        <button class="volunteer-chat-btn" onclick="chatVolunteer('A')">
-                            <i class="fas fa-comment"></i>
-                            Chat
-                        </button>
-                        <button class="volunteer-call-btn" onclick="callVolunteer('A')">
-                            <i class="fas fa-phone"></i>
-                            Call
-                        </button>
-                    </div>
+                    <div class="volunteer-distance">Distance: N/A</div>
                 </div>
-                <div class="volunteer-item">
-                    <div class="volunteer-header">
-                        <div class="volunteer-name">
-                            <i class="fas fa-user"></i>
-                            B
-                        </div>
-                        <div class="volunteer-distance">Distance: 300m</div>
-                    </div>
-                    <div class="volunteer-actions">
-                        <button class="volunteer-chat-btn" onclick="chatVolunteer('B')">
-                            <i class="fas fa-comment"></i>
-                            Chat
-                        </button>
-                        <button class="volunteer-call-btn" onclick="callVolunteer('B')">
-                            <i class="fas fa-phone"></i>
-                            Call
-                        </button>
-                    </div>
-                </div>
-                <div class="volunteer-item">
-                    <div class="volunteer-header">
-                        <div class="volunteer-name">
-                            <i class="fas fa-user"></i>
-                            C
-                        </div>
-                        <div class="volunteer-distance">Distance: 450m</div>
-                    </div>
-                    <div class="volunteer-actions">
-                        <button class="volunteer-chat-btn" onclick="chatVolunteer('C')">
-                            <i class="fas fa-comment"></i>
-                            Chat
-                        </button>
-                        <button class="volunteer-call-btn" onclick="callVolunteer('C')">
-                            <i class="fas fa-phone"></i>
-                            Call
-                        </button>
-                    </div>
+                <div class="volunteer-actions">
+                    <button class="volunteer-chat-btn" onclick="chatVolunteer('<%= vol.name %>')">
+                        <i class="fas fa-comment"></i>
+                        Chat
+                    </button>
+                    <button class="volunteer-call-btn" onclick="callVolunteer('<%= vol.phone %>')">
+                        <i class="fas fa-phone"></i>
+                        Call
+                    </button>
                 </div>
             </div>
-        </div>
+        <% }) %>
+    <% } else { %>
+        <p>No volunteers available.</p>
+    <% } %>
+</div>
+
+
+
+
+        
     </div>
 
     <!-- Bottom Navigation -->

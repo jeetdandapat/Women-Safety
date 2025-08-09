@@ -790,36 +790,41 @@
     <!-- Main Container -->
     <main class="main-container">
         <div class="dashboard">
-            <!-- Profile Card -->
-            <div class="profile-card">
-                <div class="profile-img-container">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="John Doe" class="profile-img">
-                    <div class="online-indicator"></div>
-                </div>
-                
-                <h2 class="profile-name">John Doe</h2>
-                
-                <div class="status-badge">
-                    <div class="status-dot"></div>
-                    <span class="status-text">ONLINE</span>
-                </div>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>john@example.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+123 456 7890</span>
-                    </div>
-                </div>
-                
-                <button class="logout-btn" onclick="handleLogout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <a href="girlHome.html">Logout</a>
-                </button>
-            </div>
+           <!-- Volunteer_Deshboard.ejs -->
+
+<div class="profile-card">
+  <div class="profile-img-container">
+    <!-- First Letter Avatar -->
+    <div style="width: 100px; height: 100px; background-color: #007BFF; color: white; font-size: 48px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto;">
+      <%= volunteer.name.charAt(0).toUpperCase() %>
+    </div>
+    <div class="online-indicator"></div>
+  </div>
+
+  <h2 class="profile-name"><%= volunteer.name %></h2>
+
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    <span class="status-text">ONLINE</span>
+  </div>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <span><%= volunteer.email %></span>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <span><%= volunteer.phone || 'N/A' %></span>
+    </div>
+  </div>
+
+  <a href="/volunteer-logout" class="logout-btn">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </a>
+</div>
+
+
 
             <!-- Main Dashboard -->
             <div class="main-dashboard">
@@ -935,18 +940,20 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="bottom-nav-content">
-            <button class="nav-btn" onclick="scrollToTop()">
-                <i class="fas fa-home"></i>
-                <span><a href="index.html">Home</a></span>
-            </button>
-            <button class="nav-btn logout" onclick="handleLogout()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span><a href="index.html">Logout</a></span>
-            </button>
+            <a href="/" class="nav-btn">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+</a>
+
+           <a href="/volunteer-logout" class="nav-btn logout">
+  <i class="fas fa-sign-out-alt"></i>
+  <span>Logout</span>
+</a>
+
         </div>
     </nav>
 
-    <script>
+    <!-- <script>
         // Global variables
         let currentTime = 4;
         let isOnline = true;
@@ -1117,6 +1124,6 @@
         } else {
             observeElements();
         }
-    </script>
+    </script> -->
 </body>
 </html>

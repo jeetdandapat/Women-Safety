@@ -33,9 +33,10 @@
             </div>
         </div>
         
-
-<h2 style="text-align: center; font-size: 2rem; margin: 2rem 0; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: #e0f7fa;">
-  <i class="fa-solid fa-microchip" style="color: #0f1110; font-size: 2rem; animation: pulse 1.5s infinite;"></i>
+<h2 style="text-align: center; font-size: 2rem; margin: 2rem 0; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: #e565fc;">
+  <i class="fa-solid fa-microchip" 
+     style="color: #11110f !important; font-size: 2rem; animation: pulse-only-scale 1.5s infinite;">
+  </i>
   <span style="color: #e565fc;">Active Stats</span>
 </h2>
 
@@ -49,8 +50,12 @@
 
 
 
+
+
+
  <!-- Sensor Grid -->
         <div class="sensor-grid">
+          
             <!-- Pulse Rate Sensor (MAX30102) -->
             <div class="sensor-card" data-sensor="pulse">
                 <div class="sensor-header">
@@ -230,7 +235,116 @@
                 </div>
             </div>
 
-          
+<!-- 
+ <style>
+    
+
+     .center-content {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      margin-top: 40px; /* Space from top only */
+    }
+
+    .animated-box {
+      background-color: #28a745;
+      color: white;
+      padding: 20px 60px;
+      border-radius: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        background-color: #28a745;
+      }
+      50% {
+        transform: scale(1.05);
+        background-color: #34d058;
+      }
+      100% {
+        transform: scale(1);
+        background-color: #28a745;
+      }
+    }
+  </style>
+
+  <div class="center-content">
+    <div class="animated-box">
+   Human Detected!
+    </div>
+  </div>
+           -->
+
+
+
+<!--  Human Detected Box -->
+<div id="humanDetectionCard" style="
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  display: none;
+">
+  <div style="
+    background-color: #28a745;
+    color: white;
+    padding: 20px 60px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+    animation: pulse 1.5s infinite;
+  ">
+    Human Detected!
+  </div>
+</div>
+
+<!--  Animation -->
+<style>
+@keyframes pulse {
+  0% { transform: scale(1); background-color: #28a745; }
+  50% { transform: scale(1.05); background-color: #34d058; }
+  100% { transform: scale(1); background-color: #28a745; }
+}
+</style>
+
+<script>
+  function showHumanBox() {
+    document.getElementById('humanDetectionCard').style.display = 'flex';
+  }
+
+  function hideHumanBox() {
+    document.getElementById('humanDetectionCard').style.display = 'none';
+  }
+// Human detection logic by checking the temperature and distance of the object 
+ function isHumanDetected(data) {
+    const proximityDistance = parseFloat(data.proximity.distance);
+    const temperature = parseFloat(data.thermal.temperature);
+
+    const isInTempRange = !isNaN(temperature) && temperature >= 29 && temperature <= 35;
+    const isCloseEnough = !isNaN(proximityDistance) && proximityDistance < 50;
+
+    return isInTempRange && isCloseEnough;
+  }
+
+  // Call this when new sensor data arrives
+  function onSensorDataUpdate(newData) {
+    if (isHumanDetected(newData)) {
+      showHumanBox(); // Show alert box
+    } else {
+      hideHumanBox(); // Hide alert box
+    }
+  }
+
+  //  Don't use fake data or setInterval – use this when real sensor data comes in
+</script>
+
+
 
 
 
@@ -387,7 +501,7 @@
 
 
 <!-- Bottom Navigation Bar -->
-<!-- ✅ Bottom Navigation Bar -->
+<!--  Bottom Navigation Bar -->
 <div style="
   position: fixed;
   bottom: 0;

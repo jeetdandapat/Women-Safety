@@ -239,7 +239,7 @@ function handleSensorData(event) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        to: "dandapatjeet3@gmail.com",
+        to: "ankitiwari085@gmail.com",
         subject: "🚨 Emergency Alert: Help Needed",
         html: `
           <div style="font-family: Arial, sans-serif; color: #333;">
@@ -272,7 +272,7 @@ function handleSensorData(event) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        to: "dandapatjeet3@gmail.com",
+        to: "ankitiwari085@gmail.com",
         subject: " Alert: Misbehavior with Girl Detected",
         html: `
           <div style="font-family: Arial, sans-serif; color: #333;">
@@ -362,7 +362,7 @@ function handleCancelAlert() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      to: "dandapatjeet3@gmail.com",
+      to: "ankitiwari085@gmail.com",
       subject: "Alert Cancelled",
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">

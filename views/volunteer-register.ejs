@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Volunteer Login – Blossom</title>
+  <title>Volunteer Registration – Blossom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-     body {
+    body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #eeeef4, #f8fafd, #f6f6f7, #fbfbfb);
       color: rgb(10, 9, 9);
@@ -25,7 +25,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-       background: #09193e;
+      background: #2f6af4;
       border-bottom: 1px solid #444;
       padding: 1rem 1px;
       display: flex;
@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      background: linear-gradient(135deg, #f6f1f6, #82788b, #1b2102);
+      background: linear-gradient(135deg, #d31bcd, #080709, #0c0221);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -71,7 +71,7 @@
 
     .page-container {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       padding: 2rem;
       background: rgba(12, 11, 11, 0.05);
       border: 1px solid #3b82f6;
@@ -159,10 +159,9 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #09193e;
+      background: #2f6af4;
       display: flex;
       justify-content: space-around;
-      /* padding: 10px 0; */
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
       z-index: 50;
       border-top: 1px solid rgba(168, 85, 247, 0.2);
@@ -196,7 +195,7 @@
 </head>
 <body>
 
-  <!--  Top Navbar -->
+  <!-- ✅ Top Navbar -->
   <div class="navbar">
     <div class="logo">
       <i class="fas fa-shield-alt"></i> Women Safety
@@ -204,43 +203,59 @@
     <a href="#" class="about-link"><i class="fas fa-circle-info"></i> About</a>
   </div>
 
-  <!-- Login Form -->
+  <!-- ✅ Volunteer Registration Form -->
   <div class="page-container">
     <div class="form-header">
-      <h1 class="form-title"><i class="fas fa-hands-helping"></i>  Volunteer Login</h1>
-      <p class="form-subtitle">Sign in to your volunteer account</p>
+      <h1 class="form-title"><i class="fas fa-user-plus"></i> Volunteer Registration</h1>
+      <p class="form-subtitle">Create your volunteer account</p>
     </div>
 
-    <form id="volunteerLoginForm" class="form">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" required placeholder="Enter your email">
-      </div>
+  <form id="volunteerRegisterForm" class="form" method="POST" action="/volunteer-register">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="name" required placeholder="Enter your full name">
+  </div>
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" required placeholder="Enter your password">
-      </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" required placeholder="Enter your email">
+  </div>
 
-      <button type="submit" class="btn-primary"> <a href="/Volunteer_Deshboar">Login</a></button>
-    </form>
+  <div class="form-group">
+    <label>Phone</label>
+    <input type="tel" name="phone" required placeholder="Enter your phone number">
+  </div>
+
+  <div class="form-group">
+    <label>Location</label>
+    <input type="text" name="location" required placeholder="Enter your location">
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" required placeholder="Create a password">
+  </div>
+
+  <button type="submit" class="btn-primary">Register</button>
+</form>
+
 
     <div class="form-footer">
-      <p>New Volunteer? <a href="/volunteer-register">Register here</a></p>
+      <p>Already have an account? <a href="/volunteer-login">Login here</a></p>
     </div>
   </div>
 
   <!-- Bottom Navigation -->
   <div class="bottom-nav">
-    <a href=" /WomenLogin">
+    <a href="/">
       <i class="fas fa-female"></i>
       <span>Women</span>
     </a>
-    <a href="/volunteer-login ">
+    <a href="/">
       <i class="fas fa-hands-helping"></i>
       <span>Volunteer</span>
     </a>
-    <a href="/Police_login ">
+    <a href="/">
       <i class="fas fa-user-shield"></i>
       <span>Police</span>
     </a>
